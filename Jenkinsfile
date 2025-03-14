@@ -19,8 +19,8 @@ echo "Ingrese Nombre y Apellido del usuario"
                 sudo passwd -e $NOMYAPE
                 echo "La Contraseña temporal es ."
                 }
+            }
         }
-    }
     }
 
     post {
@@ -29,4 +29,4 @@ echo "Ingrese Nombre y Apellido del usuario"
         }
     }
 }
-}
+
