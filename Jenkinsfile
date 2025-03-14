@@ -10,16 +10,15 @@ pipeline {
         stage('Build') {
             steps {
                 script{
-
-                echo "Ingrese Nombre y Apellido del usuario"
-                sh = ( read NOMYAPE)
-                sh = ( echo "Ingrese el departamento al cual pertenece")
-                sh = (read DEPARTAMENTO)
-                sh = (sudo useradd -g $DEPARTAMENTO $LOGIN)
-                sh = (sudo passwd $LOGIN)
-                sh = (sudo passwd -e $LOGIN)
-                sh = (echo "La Contraseña temporal es .")
-            }
+echo "Ingrese Nombre y Apellido del usuario"
+                read NOMYAPE
+                echo "Ingrese el departamento al cual pertenece")
+                read DEPARTAMENTO
+                sudo useradd -g $DEPARTAMENTO $NOMYAPE
+                sudo passwd $NOMYAPE
+                sudo passwd -e $NOMYAPE
+                echo "La Contraseña temporal es ."
+                }
         }
     }
 
