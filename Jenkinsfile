@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script{
 
-                sh = ( echo "Ingrese Nombre y Apellido del usuario")
+                echo "Ingrese Nombre y Apellido del usuario"
                 sh = ( read NOMYAPE)
                 sh = ( echo "Ingrese el departamento al cual pertenece")
                 sh = (read DEPARTAMENTO)
