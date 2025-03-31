@@ -1,7 +1,7 @@
-# Desafio Scrip para generacion de usuarios
+# Aplicación Scrip para generación de usuarios
 
-## Objetibo
+## Objetivo
 
-## Descripcion
+## Descripción
 
 ## Requisitos
