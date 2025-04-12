@@ -18,16 +18,16 @@ pipeline {
                 echo "Ingrese el departamento al cual pertenece"
                 //read DEPARTAMENTO
                 sh 'LOGIN=$NOMYAPE-$DEPARTAMENTO'
-                sh 'sudo useradd -g $DEPARTAMENTO $LOGIN'
-                sh 'sudo passwd $NOMYAPE'
-                sh 'sudo passwd -e $NOMYAPE'
+                sh 'useradd -g $DEPARTAMENTO $LOGIN'
+                sh 'passwd $NOMYAPE'
+                sh 'passwd -e $NOMYAPE'
                 echo "La Contraseña temporal es LOGIN."
                 sh 'LOGIN=$NOMYAPE-$GRUPO'
-                sh 'sudo useradd -g $GRUPO $LOGIN'
+                sh 'useradd -g $GRUPO $LOGIN'
                 //Generar y asignar la contraseña
                 sh 'PASSWORD=$(openssl rand -base64 8)'
-                sh 'echo "$LOGIN:$PASSWORD" | sudo chpasswd'
-                sh 'sudo passwd -e $LOGIN'
+                sh '"$LOGIN:$PASSWORD" | chpasswd'
+                sh 'passwd -e $LOGIN'
                 //Mostrar la contraseña
                 echo "-----------------------------------------"
                 echo "Usuario creado: $LOGIN"
