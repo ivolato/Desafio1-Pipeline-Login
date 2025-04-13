@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script{
                 def LOGIN = "${params.NOMYAPE}-${params.DEPARTAMENTO}"
-                sh "useradd -g '${params.DEPARTAMENTO}' '${LOGIN}'"
+                sh "sudo useradd -g '${params.DEPARTAMENTO}' '${LOGIN}'"
                 //Generar y asignar la contraseña
                 def PASSWORD = sh(script: 'openssl rand -base64 8', returnStdout: true).trim()
                 sh "${LOGIN}:$PASSWORD | chpasswd"
