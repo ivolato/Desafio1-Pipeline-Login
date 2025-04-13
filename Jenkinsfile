@@ -15,8 +15,8 @@ pipeline {
                 sh "sudo useradd -g '${params.DEPARTAMENTO}' '${LOGIN}'"
                 //Generar y asignar la contraseña
                 def PASSWORD = sh(script: 'openssl rand -base64 8', returnStdout: true).trim()
-                sh "${LOGIN}:$PASSWORD | chpasswd"
-                sh "passwd -e '${LOGIN}'"
+                sh "${LOGIN}:$PASSWORD | sudo chpasswd"
+                sh "sudo passwd -e '${LOGIN}'"
                 //Mostrar la contraseña
                 echo "-----------------------------------------"
                 echo "Usuario creado: ${LOGIN}"
@@ -34,3 +34,4 @@ pipeline {
         }
     }
 }
+
