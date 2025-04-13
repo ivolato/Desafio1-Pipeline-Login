@@ -15,8 +15,6 @@ pueda anotarlo.
 ## Requisitos
 1) Los grupos a los que serán asignados deben estar previamente creados en el sistema.
 2) Jenkins debe tener permiso "sudo".
-2.1) Abre el archivo sudoers de forma segura:
-          sudo visudo .
-2.2) Agregá una línea como esta al final:
-          jenkins ALL=(ALL) NOPASSWD: ALL .
+3) Abre el archivo sudoers de forma segura: "sudo visudo".
+4) Agregá una línea como esta al final: "jenkins ALL=(ALL) NOPASSWD: ALL".
 
