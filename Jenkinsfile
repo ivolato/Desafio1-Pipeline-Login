@@ -7,31 +7,20 @@ pipeline {
                 choices:['Contabilidad','Finanzas','Tecnologia'],
                 description:'Departamento al que pertenece.')
     }
-
     stages {
         stage('Build') {
             steps {
                 script{
-
-                echo "Ingrese Nombre y Apellido del usuario"
-                //read NOMYAPE
-                echo "Ingrese el departamento al cual pertenece"
-                //read DEPARTAMENTO
-                sh 'LOGIN=$NOMYAPE-$DEPARTAMENTO'
-                sh 'useradd -g $DEPARTAMENTO $LOGIN'
-                sh 'passwd $NOMYAPE'
-                sh 'passwd -e $NOMYAPE'
-                echo "La Contraseña temporal es LOGIN."
-                sh 'LOGIN=$NOMYAPE-$GRUPO'
-                sh 'useradd -g $GRUPO $LOGIN'
+                def LOGIN = "${params.NOMYAPE}-${params.DEPARTAMENTO}"
+                sh "useradd -g '${params.DEPARTAMENTO}' '${LOGIN}'"
                 //Generar y asignar la contraseña
-                sh 'PASSWORD=$(openssl rand -base64 8)'
-                sh '"$LOGIN:$PASSWORD" | chpasswd'
-                sh 'passwd -e $LOGIN'
+                def PASSWORD = sh(script: 'openssl rand -base64 8', returnStdout: true).trim()
+                sh "${LOGIN}:$PASSWORD | chpasswd"
+                sh "passwd -e '${LOGIN}'"
                 //Mostrar la contraseña
                 echo "-----------------------------------------"
-                echo "Usuario creado: $LOGIN"
-                echo "Contraseña: $PASSWORD"
+                echo "Usuario creado: ${LOGIN}"
+                echo "Contraseña: ${PASSWORD}"
                 echo "-----------------------------------------"
                 echo "Al iniciar sesión por primera vez deberá cambiarla."
                 }
